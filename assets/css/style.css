@@ -6,35 +6,38 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: medium;
 }
+/* Variables for repetative colors */
 :root {
-  --label-background: rgba(12, 79, 147, 0.8);
-  --label-color: white;
+  --label-background: #31343d;
+  --title-background: #92cccd;
+  --article-color: #445876;
+  --hyper-border-color: #92cccd;
 }
-
+/* Styling header and its elements */
 header {
-  background-color: rgb(17, 17, 69);
+  background-color: var(--label-background);
   width: 100%;
 }
 .navcontainer {
   display: flex;
   justify-content: space-between;
+  padding: 15px 0;
 }
-/* .title {
-  background-color: var(--label-background);
-} */
+
 h1 {
   font-size: 2.5em;
 }
 h2 {
   font-size: 2em;
 }
-h2 {
-  font-size: 1.6m;
+h3 {
+  font-size: 1.6em;
 }
-header h1 {
-  color: var(--label-color);
+.authorname {
+  background-color: var(--title-background);
+  color: #31343d;
+  padding-left: 30px;
 }
-
 .topnav {
   display: inline-block;
   align-self: center;
@@ -47,36 +50,46 @@ header h1 {
 }
 
 .topnav ul li a {
-  color: var(--label-color);
+  color: var(--hyper-border-color);
   text-decoration: none;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #92cccd;
+  font-weight: 600;
 }
+/* Setting background image and styling banner */
 .banner {
   background-image: url("../images/banner.jpg");
   object-fit: cover;
   position: relative;
-  height: 120px;
+  height: 200px;
 }
 .banner h2 {
   position: absolute;
   bottom: 8px;
   right: 16px;
   background-color: var(--label-background);
-  color: var(--label-color);
+  color: #92cccd;
+  padding: 10px;
 }
+/* Styling main content using grid */
 .content {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  margin-top: 10px;
   padding: 20px 30px;
   column-gap: 20px;
-  row-gap: 20px;
+  row-gap: 40px;
 }
-.about,
-.work,
-.contact {
+#about,
+#work,
+#contact {
   border-right: solid 2px black;
   font-size: 2.5em;
+  text-align: right;
+  padding-right: 15px;
+  color: var(--article-color);
+  font-weight: 600;
 }
+/* styling workdetails using grid */
 .workdetails {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -84,7 +97,7 @@ header h1 {
   gap: 15px;
 }
 
-.project1 {
+#project1 {
   grid-column: 1/-1;
   grid-row: 1/3;
 }
@@ -98,26 +111,54 @@ header h1 {
   width: 100%;
   height: 100%;
 }
+/* Highlighting the images using box-shadow */
+.projectcontainer:hover {
+  box-shadow: inset 0 0 8px blueviolet, 0 0 8px blueviolet;
+}
 .projectdetails {
   position: absolute;
-  background-color: var(--label-background);
+  background-color: var(--title-background);
   bottom: 2rem;
+  padding: 5px 15px;
 }
+/* styling contact information using flex */
 .contactdetails {
   display: inline-block;
   align-self: center;
-  /* margin-right: 50px; */
 }
 .contactdetails ul {
   display: flex;
   gap: 35px;
   list-style-type: none;
 }
-/* .projectname {
-  position: absolute;
-  bottom: 30px;
-} */
-/* .technology {
-  position: absolute;
-  bottom: 15px;
-} */
+.contactdetails ul li a {
+  color: var(--article-color);
+  text-decoration: none;
+  border-bottom: 2px solid var(--hyper-border-color);
+  font-weight: 600;
+}
+footer {
+  background-color: var(--label-background);
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #92cccd;
+}
+/* set responsive to the page */
+@media only screen and (max-width: 780px) {
+  .topnav ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    grid-template-columns: 1fr;
+  }
+  .workdetails {
+    grid-template-columns: 1fr;
+  }
+  .contactdetails ul {
+    flex-direction: column;
+  }
+}
